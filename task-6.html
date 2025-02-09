@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task 6</title>
     <link rel="stylesheet" href="./css/common.css" />
+    <style>
+      #boxes {
+      display: flex;
+      flex-wrap: wrap; /* Eğer kutular sığmazsa alt satıra geçmesini sağlar */
+      gap: 10px; /* Kutular arasında boşluk bırakır */
+    }
+    </style>
   </head>
   <body>
     <p><a href="./index.html">Go back</a></p>
@@ -15,7 +22,7 @@
       <button type="button" data-create>Create</button>
       <button type="button" data-destroy>Destroy</button>
     </div>
-
+    <br>
     <div id="boxes"></div>
 
     <script src="./js/task-6.js" type="module"></script>

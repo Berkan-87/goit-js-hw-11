@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task 4</title>
     <link rel="stylesheet" href="./css/common.css" />
+    <style>
+      button {
+      background-color: blue;
+      color: white; /* Yazı rengini beyaz yap */
+      padding: 10px 20px; /* Butona iç boşluk ekle */
+      border: none; /* Kenarlığı kaldır */
+      border-radius: 5px; /* Kenarları yuvarlat */
+      cursor: pointer; /* Üzerine gelince imleci değiştir */
+    }
+
+    button:hover {
+      background-color: darkblue; /* Üzerine gelince koyu mavi olsun */
+    }
+    </style>
   </head>
   <body>
     <p><a href="./index.html">Go back</a></p>
@@ -13,12 +27,17 @@
     <form class="login-form">
       <label>
         Email
+        <br>
         <input type="email" name="email" />
       </label>
+      <br>
       <label>
         Password
+        <br>
         <input type="password" name="password" />
       </label>
+      <br>
+      <br>
       <button type="submit">Login</button>
     </form>
 
