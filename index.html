@@ -6,6 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homework 7</title>
     <link rel="stylesheet" href="./css/common.css" />
+    <script>
+      function makeTableResponsive() {
+          const screenWidth = window.innerWidth;
+          const table = document.getElementById("responsive-table");
+          const container = document.getElementById("table-container");
+
+          if (screenWidth < 600) { 
+              // **Mobilde** tabloyu dikey liste yap
+              let rows = table.querySelectorAll("tr");
+              let newHTML = "";
+              rows.forEach((row, index) => {
+                  if (index === 0) return; // Başlık satırını atla
+                  let cells = row.querySelectorAll("td");
+                  newHTML += `
+                      <div style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
+                          <p><strong>Ad:</strong> ${cells[0].innerText}</p>
+                          <p><strong>Yaş:</strong> ${cells[1].innerText}</p>
+                          <p><strong>Şehir:</strong> ${cells[2].innerText}</p>
+                      </div>
+                  `;
+              });
+              container.innerHTML = newHTML;
+          } else if (screenWidth < 900) {  
+              // **Tablette** tabloyu kaydırılabilir yap
+              container.innerHTML = "";
+              container.appendChild(table);
+              table.style.width = "90%";
+              table.style.overflowX = "auto";
+              table.style.display = "block";
+          } else {  
+              // **PC'de** orijinal tabloyu göster
+              container.innerHTML = "";
+              container.appendChild(table);
+              table.style.width = "100%";
+              table.style.display = "table";
+          }
+      }
+
+      // Sayfa yüklendiğinde ve ekran boyutu değiştiğinde çalıştır
+      window.addEventListener("load", makeTableResponsive);
+      window.addEventListener("resize", makeTableResponsive);
+  </script>
   </head>
   <body>
     <ul>
