@@ -16,6 +16,7 @@
     "vite-plugin-html-inject": "^1.1.2"
   },
   "devDependencies": {
+    "postcss-sort-media-queries": "^5.2.0",
     "prettier": "^2.2.1"
   }
 }
