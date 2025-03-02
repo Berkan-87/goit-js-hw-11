@@ -4,18 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Image Search</title>
-  <link rel="stylesheet" href="/src/styles.css">
-  <link rel="stylesheet" href="node_modules/izitoast/dist/css/iziToast.min.css">
-  <link rel="stylesheet" href="node_modules/simplelightbox/dist/simple-lightbox.min.css">
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-  <form class="search-form" id="search-form">
-    <input type="text" name="query" autocomplete="off" placeholder="Search images..." />
-    <button type="submit">Search</button>
-  </form>
-  <div class="loader" id="loader"></div>
-  <ul class="gallery"></ul>
-
-  <script type="module" src="/main.js"></script>
+  <div id="app">
+    <form id="search-form">
+      <input type="text" id="search-input" placeholder="Search images...">
+      <button type="submit">Search</button>
+    </form>
+    <div id="gallery"></div>
+    <div id="loader" class="hidden">Loading...</div>
+  </div>
+  <script type="module" src="./js/main.js"></script>
 </body>
 </html>

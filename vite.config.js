@@ -9,11 +9,11 @@ export default defineConfig(({ command }) => {
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
-    root: 'src',
+    root: 'src', // Proje kök dizinini 'src' olarak ayarlıyoruz
     build: {
       sourcemap: true,
       rollupOptions: {
-        input: glob.sync('./src/*.html'),
+        input: glob.sync('./src/index.html'), // Ensure the path is correct
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
@@ -37,13 +37,15 @@ export default defineConfig(({ command }) => {
       outDir: '../dist',
       emptyOutDir: true,
     },
+    server: {
+      open: true, // Geliştirme sunucusunu otomatik olarak açar
+    },
     plugins: [
       injectHTML(),
-      FullReload(['./src/**/**.html']),
+      FullReload(['./src/**/*.html']),
       SortCss({
         sort: 'mobile-first',
       }),
     ],
   };
 });
-
