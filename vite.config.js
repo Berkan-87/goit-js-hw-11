@@ -9,7 +9,7 @@ export default defineConfig(({ command }) => {
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
-    root: 'src', // Proje kök dizinini 'src' olarak ayarlıyoruz
+    root: 'src',
     build: {
       sourcemap: true,
       rollupOptions: {
@@ -38,7 +38,7 @@ export default defineConfig(({ command }) => {
       emptyOutDir: true,
     },
     server: {
-      open: true, // Geliştirme sunucusunu otomatik olarak açar
+      open: true,
     },
     plugins: [
       injectHTML(),

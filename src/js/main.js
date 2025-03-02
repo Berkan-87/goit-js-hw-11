@@ -3,6 +3,8 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import '../css/styles.css'; // CSS dosyasını import edin
+
 
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
@@ -13,11 +15,20 @@ const clearGallery = () => {
   gallery.innerHTML = '';
 };
 
+const lightbox = new SimpleLightbox('.gallery-item a', {
+  captions: true,
+  captionsData: 'alt',
+  captionDelay: 250,
+  close: true,
+  loop: true,
+  nav: true
+});
+
 searchForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const query = searchInput.value.trim();
   if (!query) {
-    iziToast.error({ title: 'Error', message: 'Please enter a search query!' });
+    iziToast.error({ title: '', message: 'Please enter a search query!' });
     return;
   }
   clearGallery();
@@ -25,7 +36,7 @@ searchForm.addEventListener('submit', async (e) => {
   try {
     const images = await fetchImages(query);
     if (images.length === 0) {
-      iziToast.error({ title: 'Error', message: 'Sorry, there are no images matching your search query. Please try again!' });
+      iziToast.error({ title: '', message: 'Sorry, there are no images matching your search query. Please try again!' });
       loader.classList.add('hidden');
       return;
     }
@@ -33,17 +44,29 @@ searchForm.addEventListener('submit', async (e) => {
       <a href="${image.largeImageURL}" class="gallery-item">
         <img src="${image.webformatURL}" alt="${image.tags}">
         <div class="info">
-          <p>Likes: ${image.likes}</p>
-          <p>Views: ${image.views}</p>
-          <p>Comments: ${image.comments}</p>
-          <p>Downloads: ${image.downloads}</p>
+          <div class="stat">
+            <span class="label">Likes</span>
+            <span class="value">${image.likes}</span>
+          </div>
+          <div class="stat">
+            <span class="label">Views</span>
+            <span class="value">${image.views}</span>
+          </div>
+          <div class="stat">
+            <span class="label">Comments</span>
+            <span class="value">${image.comments}</span>
+          </div>
+          <div class="stat">
+            <span class="label">Downloads</span>
+            <span class="value">${image.downloads}</span>
+          </div>
         </div>
       </a>
     `).join('');
     gallery.innerHTML = imageCards;
-    new SimpleLightbox('.gallery a').refresh();
+    lightbox.refresh(); // Lightbox'u yenileyin
   } catch (error) {
-    iziToast.error({ title: 'Error', message: 'An error occurred. Please try again later.' });
+    iziToast.error({ title: '', message: 'An error occurred. Please try again later.' });
   } finally {
     loader.classList.add('hidden');
   }
