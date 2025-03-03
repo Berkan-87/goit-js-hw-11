@@ -5,6 +5,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import '../css/styles.css'; // CSS dosyasını import edin
 
+
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 const gallery = document.getElementById('gallery');
@@ -14,7 +15,14 @@ const clearGallery = () => {
   gallery.innerHTML = '';
 };
 
-let lightbox;
+const lightbox = new SimpleLightbox('.gallery-item a', {
+  captions: true,
+  captionsData: 'alt',
+  captionDelay: 250,
+  close: true,
+  loop: true,
+  nav: true
+});
 
 searchForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -56,21 +64,6 @@ searchForm.addEventListener('submit', async (e) => {
       </a>
     `).join('');
     gallery.innerHTML = imageCards;
-
-    if (lightbox) {
-      lightbox.destroy();
-    }
-    lightbox = new SimpleLightbox('.gallery-item a', {
-      captions: true,
-      captionsData: 'alt',
-      captionDelay: 250,
-      close: true,
-      loop: true,
-      nav: true,
-      swipeClose: true,
-      animationSpeed: 250,
-      fadeSpeed: 300
-    });
     lightbox.refresh(); // Lightbox'u yenileyin
   } catch (error) {
     iziToast.error({ title: '', message: 'An error occurred. Please try again later.' });
