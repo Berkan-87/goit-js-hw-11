@@ -78,3 +78,5 @@ searchForm.addEventListener('submit', async (e) => {
     loader.classList.add('hidden');
   }
 });
+
+lightbox.refresh();
