@@ -9,6 +9,7 @@ const searchInput = document.getElementById('search-input');
 const gallery = document.getElementById('gallery');
 const loader = document.getElementById('loader');
 
+
 let lightbox; // SimpleLightbox örneği
 
 const clearGallery = () => {
@@ -47,7 +48,7 @@ searchForm.addEventListener('submit', async (e) => {
   const query = searchInput.value.trim();
 
   if (!query) {
-    iziToast.error({ title: '', message: 'Please enter a search query!' });
+    iziToast.error({ title: '', message: 'Please enter a search query!', backgroundColor: 'red', position: 'topRight' });
     return;
   }
 
@@ -56,11 +57,11 @@ searchForm.addEventListener('submit', async (e) => {
   try {
     const images = await fetchImages(query);
     if (images.length === 0) {
-      iziToast.error({ title: '', message: 'No images found. Try a different search term!' });
+      iziToast.error({ title: '', icon: 'fas fa-times-circle', message: 'Sorry, there are no images matching your search query. Please try again!', backgroundColor: 'red', position: 'topRight'});
       return;
     }
 
-    renderGallery(images);
+    renderGallery(images); 
 
     // SimpleLightbox'ı oluştur veya yenile
     if (lightbox) {

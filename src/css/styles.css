@@ -89,4 +89,16 @@ body {
   font-size: 13px;
 }
 
+.alert {
+  background-color: #B51B1B; /* Arka plan rengi kırmızı */
+  color: white; /* Metin rengi beyaz */
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Gölge efekti */
+}
 
+.iziToast-icon {
+  display: block !important;
+  font-size: 20px !important;
+  color: white !important; /* İkon rengini beyaz yapar */
+}
