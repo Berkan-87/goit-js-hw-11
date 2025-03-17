@@ -89,16 +89,32 @@ body {
   font-size: 13px;
 }
 
-.alert {
-  background-color: #B51B1B; /* Arka plan rengi kırmızı */
-  color: white; /* Metin rengi beyaz */
-  padding: 15px;
-  border-radius: 4px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Gölge efekti */
+
+/* Input alanı varsayılan stil */
+#search-input {
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
 }
 
-.iziToast-icon {
-  display: block !important;
-  font-size: 20px !important;
-  color: white !important; /* İkon rengini beyaz yapar */
+/* Fare üzerine gelince koyulaşan efekt */
+#search-input:hover {
+  border-color: #555; /* Daha koyu bir çerçeve */
+}
+
+/* Input odaklandığında (yazı yazarken) mavi çerçeve */
+#search-input:focus {
+  border: 2px solid #4E75FF; /* Mavi çerçeve */
+  outline: none;
+  box-shadow: 0 0 8px #4E75FF; /* Hafif mavi parlama */
+}
+
+
+.iziToast .iziToast-message {
+  text-decoration: none !important; /* Alt çizgileri kaldır */
+}
+
+.stat .label, .stat .value {
+  text-decoration: none; /* Alt çizgiyi kaldırır */
 }
