@@ -57,7 +57,7 @@ searchForm.addEventListener('submit', async (e) => {
   try {
     const images = await fetchImages(query);
     if (images.length === 0) {
-      iziToast.error({ title: '', icon: 'fas fa-times-circle', message: 'Sorry, there are no images matching your search query. Please try again!', backgroundColor: 'red', position: 'topRight'});
+      iziToast.error({ title: '', message: 'Sorry, there are no images matching your search query. Please try again!', backgroundColor: 'red', position: 'topRight'});
       return;
     }
 
